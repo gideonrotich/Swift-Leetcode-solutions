@@ -1,15 +1,16 @@
 class Solution {
     func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
-       var indexMap = [Int:Int]()
+        var dictionary = [Int: Int]()
 
-       for(i,num) in nums.enumerated(){
-         let complement = target - num
-         if let index = indexMap[complement]{
-               return [index,i]
-         }
-            indexMap[num] = i
-       }
+        for (index,num) in nums.enumerated(){
+            let complement = target - num
 
-       return []
+            if let complementIndex = dictionary[complement]{
+                return [complementIndex, index]
+            }
+
+            dictionary[num] = index
+        }
+        return []
     }
 }
