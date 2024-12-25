@@ -1,17 +1,19 @@
 class Solution {
     func smallerNumbersThanCurrent(_ nums: [Int]) -> [Int] {
-        var result = [Int](repeating:0,count:nums.count)
+        var ans: [Int] = []
 
         for i in 0..<nums.count{
-            var count = 0
+            var temp : [Int] = []
 
-            for j in 0..<nums.count{
-                if nums[j] < nums[i]{
-                    count += 1
+            var filteredArray = nums.filter{ $0 != nums[i]}
+
+            for j in 0..<filteredArray.count{
+                if filteredArray[j] < nums[i]{
+                    temp.append(filteredArray[j])
                 }
             }
-            result[i] = count
+            ans.append(temp.count)
         }
-        return result
+        return ans
     }
 }
